@@ -26,7 +26,7 @@ const expressServer = http.createServer(app);
 if (process.env.NODE_ENV === "local") {
   app.use(
     cors({
-      origin: "http://localhost:5173",
+      origin: "https://tasklink-7vff.onrender.com",
       credentials: true,
     })
   );
@@ -115,7 +115,7 @@ app.use((err, req, res, next) => {
 //Handling CORS origin
 export const io = new Server(expressServer, {
   cors: {
-    origin: '*',  // Allow all origins
+    origin: "https://tasklink-7vff.onrender.com",  // Allow all origins
     credentials: true,
   },
 });
