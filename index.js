@@ -26,19 +26,23 @@ const expressServer = http.createServer(app);
 if (process.env.NODE_ENV === "local") {
   app.use(
     cors({
-      origin: "https://tasklink-7vff.onrender.com",
+      origin: [
+        "http://localhost:3000", 
+        "http://localhost:5173",
+        "https://tasklink-7vff.onrender.com",
+      ],
       credentials: true,
     })
   );
 } else {
   app.use(
     cors({
-      origin:"*",
+      origin: "https://tasklink-7vff.onrender.com",
       credentials: true,
-      methods:["GET","POST","PUT","PATCH","DELETE"]
     })
   );
 }
+
 
 const PORT = 3000;
 
@@ -115,10 +119,17 @@ app.use((err, req, res, next) => {
 //Handling CORS origin
 export const io = new Server(expressServer, {
   cors: {
-    origin: "https://tasklink-7vff.onrender.com",  // Allow all origins
-    credentials: true,
+    origin: [
+      "http://localhost:3000",           // For local development
+      "http://localhost:5173",           // If using Vite locally
+      "https://tasklink-7vff.onrender.com",
+      "https://thunder-scarlet-wizard.glitch.me" // Production frontend
+    ],
+    credentials: true, // Allow cookies/auth headers
+    methods: ["GET", "POST"], // Specify allowed methods
   },
 });
+
 
 
 
