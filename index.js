@@ -122,8 +122,7 @@ export const io = new Server(expressServer, {
     origin: [
       "http://localhost:3000",           // For local development
       "http://localhost:5173",           // If using Vite locally
-      "https://tasklink-7vff.onrender.com",
-      "https://thunder-scarlet-wizard.glitch.me" // Production frontend
+      "https://tasklink-7vff.onrender.com", // Production frontend
     ],
     credentials: true, // Allow cookies/auth headers
     methods: ["GET", "POST"], // Specify allowed methods

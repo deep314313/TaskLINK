@@ -12,7 +12,8 @@ import { signal } from "@preact/signals-react"
 export const socket = io("https://thunder-scarlet-wizard.glitch.me/", {
     headers: {
         "user-agent": "chrome"
-    }
+    },
+    transports: ["websocket", "polling"],
 })
 
 
